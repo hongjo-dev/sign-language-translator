@@ -108,11 +108,11 @@ npm run start
 
 | 첫 화면 | 방 생성 및 입장 화면 | 통역 방 화면 |
 | --- | --- | --- |
-| <img src="image/첫화면.png" alt="첫 화면" width="200"> | <img src="image/방생성및입장화면.png" alt="방 생성 및 입장 화면" width="200"> | <img src="image/통역방화면.png" alt="통역 방 화면" width="200"> |
+| <img src="image/첫화면.png" alt="첫 화면" width="600"> | <img src="image/방생성및입장화면.png" alt="방 생성 및 입장 화면" width="600"> | <img src="image/통역방화면.png" alt="통역 방 화면" width="600"> |
 
 | 한국어 → 수어 영상 | 수어 진행 화면 | 수어 번역 결과 화면 |
 | --- | --- | --- |
-| <img src="image/한국어_수어영상.png" alt="한국어 → 수어 영상" width="200"> | <img src="image/수어진행.png" alt="수어 진행 화면" width="200"> | <img src="image/수어번역결과.png" alt="수어 번역 결과 화면" width="200"> |
+| <img src="image/한국어_수어영상.png" alt="한국어 → 수어 영상" width="600"> | <img src="image/수어진행.png" alt="수어 진행 화면" width="600"> | <img src="image/수어번역결과.png" alt="수어 번역 결과 화면" width="600"> |
 
 ---
 ## 👥 협업 기여자
