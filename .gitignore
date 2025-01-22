@@ -121,3 +121,4 @@ pip-delete-this-directory.txt
 # 모든 mp4, webm 파일 무시
 *.mp4
 *.webm
+*.MP4
