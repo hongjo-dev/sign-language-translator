@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# 👐 Sign Language Transformer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Sign Language Transformer**는 **Node.js & React** 기반 웹 애플리케이션으로, **수어 → 한국어**와 **한국어 → 수어** 양방향 번역을 제공합니다.
 
-## Available Scripts
+- **수어 영상**을 업로드하면 **수어 문장**(텍스트)으로 변환
+- **한국어 문장**을 입력하면 **수어 문장**(텍스트)과 해당 **수어 영상**으로 변환
 
-In the project directory, you can run:
+해당 프로젝트는 **Transformer** 모델과 협업자를 통한 **수어 Detection 모델**을 결합하여, 실시간 수어 번역 및 텍스트 번역을 구현했습니다.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🔑 **주요 특징**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **수어 → 한국어 번역**  
+   - **수어 영상** → **수어 문장(텍스트)**(수어 Detection by 범모) → **한국어 문장** (Transformer)
 
-### `npm test`
+2. **한국어 → 수어 번역**  
+   - **한국어 문장** → **수어 문장** (Transformer) → **수어 영상**(미리 준비된 영상 시퀀스)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Node.js + React** 풀스택  
+   - 서버: **Node.js/Express**  
+   - 클라이언트: **React** (with Socket.io for real-time communication)
 
-### `npm run build`
+4. **모델 구성**  
+   - **Transformer 기반 번역 모델** (자체 학습/파인튜닝)  
+   - **수어 Detection 모델** (범모 제작, 영상 처리/추론)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📂 프로젝트 구조
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```plaintext
+📦 sign-language-translator
+├── model/                   # Transformer 모델, vocab, 학습 관련 코드
+├── server.js                # Node.js 서버 (Express + Socket.io)
+├── client/                  # React 클라이언트
+│   ├── src/
+│   └── public/
+├── .gitignore
+├── .env                     # 환경 변수 (민감정보, 모델 경로 등)
+├── package.json
+└── README.md
 
-### `npm run eject`
+⚙️ 설치 및 실행
+1️⃣ 환경 설정
+Node.js 설치 (v14 이상 권장)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Node.js 공식 웹사이트에서 다운로드 및 설치
+Python 3.8+ 설치 (모델 추론용)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Python 공식 웹사이트
+PyTorch, ffmpeg 등 추가 패키지가 필요할 수 있음
+패키지 설치
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+서버(sign-language-translator/ 루트 디렉터리)에서:
+bash
+복사
+npm install
+클라이언트(sign-language-translator/client/)에서:
+bash
+복사
+npm install
+2️⃣ 서버/클라이언트 실행
+서버(Node.js)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+bash
+복사
+# 루트 디렉터리에서
+node server.js
+# or
+npm run start:server
+클라이언트(React)
 
-## Learn More
+bash
+복사
+# client 폴더에서
+npm run start
+서버가 5000번 포트, 클라이언트가 3000번 포트에서 실행된다고 가정하면, 브라우저에서 http://localhost:3000 으로 접속 가능합니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🗂 데이터셋
+수어 Detection 학습 데이터
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+예: 범모가 수집/가공한 수어 영상 + 라벨(문장)
+일정 수어 단어(“안녕”, “반갑”)의 영상 → 자막(“안녕”, “반갑”)
+수어 ↔ 한국어 번역 데이터
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+예: AI허브 한국어 번역 데이터셋 일부 커스텀
+수어 문장(텍스트) ↔ 한국어 문장 페어로 학습
+👥 협업 기여자
+범모: 수어 Detection 모델 개발, 영상 데이터셋 구축
+안홍조 (본인): Node.js 서버, React 클라이언트, Transformer 모델 파이프라인 구성, 수어 영상 Stitching 및 통합
+🧩 기술 스택
+Node.js / Express / Socket.io
+React (CRA 기반)
+PyTorch (Transformer 모델)
+FFmpeg (영상 변환, Stitching)
+Multer (파일 업로드)
