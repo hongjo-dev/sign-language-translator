@@ -132,5 +132,5 @@ npm run start
 - **Node.js / Express / Socket.io**
 - **React** (CRA 기반)
 - **PyTorch** (Transformer 모델)
-- **FFmpeg** (영상 변환, Stitching)
+- **FFmpeg** (영상 변환)
 - **Multer** (파일 업로드)
