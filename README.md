@@ -1,6 +1,6 @@
-# 👐 Sign Language Transformer
+# 👐 Two-way Sign language translation
 
-**Sign Language Transformer**는 **Node.js & React** 기반 웹 애플리케이션으로, **수어 → 한국어**와 **한국어 → 수어** 양방향 번역을 제공합니다.
+**Two-way Sign language translationr**는 **Node.js & React** 기반 웹 애플리케이션으로, **수어 → 한국어**와 **한국어 → 수어** 양방향 번역을 제공합니다.
 
 - **수어 영상**을 업로드하면 **수어 문장**(텍스트)으로 변환
 - **한국어 문장**을 입력하면 **수어 문장**(텍스트)과 해당 **수어 영상**으로 변환
