@@ -1,0 +1,230 @@
+.translation-room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #7289da;  /* 디스코드와 유사한 배경색 */
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 가운데 정렬 */
+    width: 100%;
+    max-width: 1200px; /* 비디오 컨테이너의 최대 너비 설정 */
+    gap: 10px;
+}
+
+.video-element {
+    flex: 1 1 calc(33.33% - 20px); /* 여유 공간을 두고 세 개의 비디오가 한 줄에 나타나도록 너비 조정 */
+    max-width: calc(33.33% - 20px); /* 최대 너비를 동일하게 유지 */
+    height: auto;
+    background-color: black;
+    margin: 1%;
+    box-sizing: border-box;
+    transform: scaleX(-1);
+}
+
+.video-element.translated {
+    flex: 1 1 calc(50% - 20px); /* 번역된 동영상을 더 크게 설정 */
+    max-width: calc(50% - 20px);
+    transform: none; /* 번역된 동영상에 적용 */
+}
+
+video {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.translation-room .record-button, .translation-room .translate-button {
+    background-color: #5865f2;  /* 디스코드와 유사한 버튼 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+
+/* 녹화 중인 경우 (Stop Recording) */
+.translation-room .record-button.recording {
+    background-color: #dc3545; /* 녹화 중지 버튼 색상 (빨간색) */
+}
+
+/* 원격 녹화 중인 경우 */
+.translation-room .record-button.remote-recording {
+    background-color: #dc3545; /* 원격 녹화 중지 버튼 색상 (황금색) */
+}
+
+/* 호버 효과 */
+.translation-room .record-button:hover {
+    background-color: #4752c4; /* 마우스 오버 시 색상 */
+}
+
+.messages {
+    width: 100%;
+    max-width: 800px;
+    height: 150px;
+    overflow-y: scroll;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;  /* 메시지 색상 */
+}
+
+.translation-room .input-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.translation-room textarea {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    resize: none;
+    font-size: 16px;
+    height: 50px;
+    box-sizing: border-box;
+    outline: none;
+    color: #555;
+    background-color: #f7f7f7;
+}
+
+.translation-room button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: #5865f2;  /* 디스코드와 유사한 버튼 색상 */
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 5px;
+}
+
+.translation-room button:hover {
+    background-color: #4752c4;  /* 마우스 오버 시 색상 */
+}
+
+.recorded-video-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.recorded-video-container video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.user-list {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;  /* 사용자 목록 색상 */
+}
+
+.user-list h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #5865f2;  /* 디스코드와 유사한 색상 */
+}
+
+.user-list ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.user-list li {
+    font-size: 16px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.user-list li:last-child {
+    border-bottom: none;
+}
+
+/* 추가된 사용자 역할 스타일 */
+.user-list .admin {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.user-list .moderator {
+    color: #f0ad4e;
+}
+
+.user-list .member {
+    color: #5bc0de;
+}
+
+.user-list .guest {
+    color: #5cb85c;
+}
+
+/* 메시지 역할별 스타일 */
+.message.admin {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.message.moderator {
+    color: #f0ad4e;
+}
+
+.message.member {
+    color: #5bc0de;
+}
+
+.message.guest {
+    color: #5cb85c;
+}
+
+/* Translate 버튼 스타일링 */
+.messages .translate-button {
+    background-color: #5865f2;  /* 디스코드와 유사한 버튼 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.messages .translate-button:hover {
+    background-color: #4752c4;  /* 마우스 오버 시 색상 */
+}
